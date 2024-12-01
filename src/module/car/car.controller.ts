@@ -85,9 +85,32 @@ const updateACar = async (req: Request, res: Response)=> {
     }
 }
 
+const deleteACar = async (req: Request, res: Response)=> {
+    try{
+        const id = req.params.carId;
+        const result = await carService.deleteACar(id);
+
+        res.send({
+            message: 'Car deleted successfully',
+            status: true,
+            data: {},
+        })
+
+    }catch(error){
+        const isDev = process.env.NODE_ENV === 'development';
+        res.status(500).send({
+            message: (error as Error).message || 'An error occurred.',
+            status: false,
+            error: (error as Error).name || 'UnknownError',
+           ...(isDev && { stack: (error as Error).stack }),
+        });
+    }
+}
+
 export const carController = {
     createCar,
     getAllCars,
     getACar,
-    updateACar
+    updateACar,
+    deleteACar
 }

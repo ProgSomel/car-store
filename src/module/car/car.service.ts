@@ -33,9 +33,15 @@ const updateACar = async (id:string, car: ICar): Promise<ICar | null> => {
     return result;
 }
 
+const deleteACar = async (id: string): Promise<ICar | null> => {
+    const result = await Car.findByIdAndDelete(id);
+    return result;
+}
+
 export const carService = {
     createCar,
     getAllCars,
     getACar,
-    updateACar
+    updateACar,
+    deleteACar
 }

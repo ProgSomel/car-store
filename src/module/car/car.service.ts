@@ -23,7 +23,19 @@ const getAllCars = async (searchTerm?: string): Promise<ICar[]> => {
     }
 }
 
+const getACar = async (id:string): Promise<ICar | null> => {
+    const result = await Car.findById(id);
+    return result;
+}
+
+const updateACar = async (id:string, car: ICar): Promise<ICar | null> => {
+    const result = await Car.findByIdAndUpdate(id, car, {new: true});
+    return result;
+}
+
 export const carService = {
     createCar,
-    getAllCars
+    getAllCars,
+    getACar,
+    updateACar
 }

@@ -31,5 +31,4 @@ const carSchema = new Schema({
         type: Boolean,
     }
 
-
 })

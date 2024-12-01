@@ -21,6 +21,26 @@ const createOrder = async(order: IOrder): Promise<IOrder> => {
     return result;
 }
 
+const revenuesFromOrders = async (): Promise<number> => {
+    const result = await Order.aggregate([
+        {
+            $group: {
+                _id: null,
+                totalRevenue: {$sum : "$totalPrice"},
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                totalRevenue: 1,
+            }
+        }
+    ])
+
+    return result[0].totalRevenue || 0;
+}
+
 export const orderService = {
-    createOrder
+    createOrder,
+    revenuesFromOrders
 }

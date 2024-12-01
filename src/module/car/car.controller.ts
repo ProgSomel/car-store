@@ -24,6 +24,27 @@ const createCar = async (req: Request<{}, {}, ICar>, res: Response) => {
     }
 };
 
+const getAllCars =  async (req: Request, res: Response)=> {
+    try {
+        const searchTerm = req.query.searchTerm as string;
+        const cars = await carService.getAllCars(searchTerm);
+        res.send({
+            message: 'Cars retrieved successfully',
+            success: true,
+            data: cars,
+        });
+    } catch (error) {
+        const isDev = process.env.NODE_ENV === 'development';
+        res.status(500).send({
+            message: (error as Error).message || 'An error occurred.',
+            success: false,
+            error: (error as Error).name || 'UnknownError',
+           ...(isDev && { stack: (error as Error).stack }),
+        });
+    }
+}
+
 export const carController = {
     createCar,
+    getAllCars
 }

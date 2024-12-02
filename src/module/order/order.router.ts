@@ -5,5 +5,6 @@ const orderRouter = Router();
 
 orderRouter.post('/', orderController.createOrder);
 orderRouter.get('/revenue', orderController.revenuesFromOrders);
-
+  
 export default orderRouter;
+ 

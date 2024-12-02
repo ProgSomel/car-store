@@ -16,8 +16,7 @@ The goal of this project is to:
 ---
 
 ## 🌐 **Live URL**
-The server is live and accessible at: [https://your-live-url.com](https://your-live-url.com)
-
+The server is live and accessible at: [https://car-store-server-three.vercel.app/]
 ---
 
 ## ✨ **Features**

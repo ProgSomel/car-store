@@ -49,9 +49,13 @@ The server is live and accessible at: [https://car-store-server-three.vercel.app
 git clone https://github.com/ProgSomel/car-store.git
 cd your-repo-name
 npm install
+---
 Create a .env file in the project root with the following configuration:
 PORT=5000
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/car-store?retryWrites=true&w=majority
+
+---
+Run the project using:
 npm run dev
 
 
